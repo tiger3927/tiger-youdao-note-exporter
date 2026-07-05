@@ -810,7 +810,8 @@ def process_images(md_content, img_urls, target_dir, safe_title, context):
     if not img_urls:
         return md_content, 0
 
-    target_dir.mkdir(parents=True, exist_ok=True)
+    img_dir = target_dir / "image"
+    img_dir.mkdir(parents=True, exist_ok=True)
     downloaded = 0
     for i, url in enumerate(img_urls):
         content, content_type = download_image(url, context)
@@ -822,12 +823,12 @@ def process_images(md_content, img_urls, target_dir, safe_title, context):
             if ext not in ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp']:
                 ext = 'png'
             img_name = f"{safe_title}_{i+1}.{ext}"
-            img_path = target_dir / img_name
+            img_path = img_dir / img_name
             with open(img_path, 'wb') as f:
                 f.write(content)
             # URL 编码文件名，避免括号、中文等特殊字符破坏 markdown 图片语法
             encoded_name = urllib.parse.quote(img_name, safe='')
-            md_content = md_content.replace(f"<!--IMG:{i}-->", f"![{img_name}]({encoded_name})")
+            md_content = md_content.replace(f"<!--IMG:{i}-->", f"![{img_name}](image/{encoded_name})")
             downloaded += 1
         else:
             md_content = md_content.replace(f"<!--IMG:{i}-->", "![图片下载失败]")

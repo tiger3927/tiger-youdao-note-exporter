@@ -1,5 +1,7 @@
 # 项目文件结构
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 ```
 有道云笔记爬取/
 ├── scripts/                         # 工具脚本目录

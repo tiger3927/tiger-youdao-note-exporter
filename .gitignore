@@ -1,0 +1,36 @@
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 运行日志
+logs/
+*.log
+
+# 浏览器用户数据（自动生成，包含登录态）
+cloak_user_data/
+
+# 登录状态（敏感信息）
+scripts/youdao_login_state.json
+
+# 导出输出目录（笔记内容）
+有道云笔记/
+
+# 备份
+backup/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# IDE / 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 操作系统
+.DS_Store
+Thumbs.db
